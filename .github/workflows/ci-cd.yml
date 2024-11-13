@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-name: Node.js CI
-=======
 name: CI Pipeline
->>>>>>> 15880835b8877c2e80865218ff22e01f2eb31a9e
 
 on:
   push:
@@ -13,8 +9,7 @@ on:
       - main
 
 jobs:
-<<<<<<< HEAD
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -22,49 +17,29 @@ jobs:
         node-version: [16.x]
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        run: |
-          npm install
+        run: npm install
 
-      - name: Run Jest tests
-        run: |
-          npm test
+      - name: Run tests
+        run: npx jest # Use npx to run Jest
 
+      # Optional: Upload Jest test results
+      - name: Upload Jest test results
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: jest-test-results
+          path: ./jest-results/ # Adjust this path if necessary
+
+      # Optional: Upload coverage report (if using codecov or similar)
       - name: Upload coverage report
         if: success()
         uses: codecov/codecov-action@v2
-=======
-  build_and_test:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'  # Use the version you are working with
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run tests
-      run: npx jest   # Use npx to run Jest
-
-    # Optional: Upload Jest test results
-    - name: Upload Jest test results
-      if: success() || failure()
-      uses: actions/upload-artifact@v3
-      with:
-        name: jest-test-results
-        path: ./jest-results/   # Adjust this if necessary
->>>>>>> 15880835b8877c2e80865218ff22e01f2eb31a9e
