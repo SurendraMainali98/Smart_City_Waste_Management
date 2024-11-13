@@ -1,28 +1,40 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
   push:
     branches:
-      - main # Trigger the pipeline when changes are made to the main branch
+      - main   # Change to your default branch if necessary
+  pull_request:
+    branches:
+      - main   # Change to your default branch if necessary
 
 jobs:
-  build:
-    runs-on: ubuntu-latest # This is the environment for running the steps
+  build_and_test:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2 # This action checks out your code from GitHub
+    # Checkout the code
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "16" # Make sure the version of Node.js is correct for your project
+    # Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'   # Set your Node.js version here
 
-      - name: Install dependencies
-        run: npm install # Installs all the dependencies in package.json
+    # Install dependencies
+    - name: Install dependencies
+      run: npm install
 
-      - name: Run tests
-        run: npm test # Run tests (you need to have test scripts in your package.json)
+    # Run tests with Jest
+    - name: Run tests
+      run: npm test   # This assumes you have a 'test' script defined in your package.json
 
-      - name: Deploy Application
-        run: ./deploy.sh # A script for deploying the app (you can replace it with your deployment command)
+    # Optional: Upload Jest test results (if using a reporter like Jest's 'jest-junit' or similar)
+    - name: Upload Jest test results
+      if: success() || failure()
+      uses: actions/upload-artifact@v3
+      with:
+        name: jest-test-results
+        path: ./jest-results/   # Modify based on your Jest output configuration
