@@ -1,14 +1,25 @@
 {
     "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "outDir": ".main",
-        "rootDir": "src",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
+      "target": "es6",                          // Keeps ECMAScript target as ES6
+      "module": "commonjs",                     // Necessary for Jest to work correctly
+      "outDir": ".main",                        // Keeps the compiled JavaScript in a .main directory
+      "rootDir": "src",                         // Ensures your source code is in the src folder
+      "strict": true,                           // Enables strict type checking options
+      "esModuleInterop": true,                  // Ensures compatibility with CommonJS modules
+      "skipLibCheck": true,                     // Skip library type checking (improves build time)
+      "forceConsistentCasingInFileNames": true, // Ensures file names are consistent (prevents errors on case-sensitive file systems)
+      "moduleResolution": "node",               // Resolves modules as Node.js would
+      "resolveJsonModule": true,                // Allows importing JSON files (useful for data)
+      "isolatedModules": true,                  // Ensures each file is treated as an isolated module (important for transpiling)
+      "jsx": "react",                           // If you are using JSX, otherwise you can remove this line
+      "allowJs": true                           // Allow JavaScript files to be compiled as well (useful if you mix JS and TS)
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules"]
-}
+    "include": [
+      "src/**/*"                                 // Include all TypeScript files in the src folder
+    ],
+    "exclude": [
+      "node_modules",                            // Exclude node_modules folder to avoid unnecessary type checks
+      "**/*.test.ts"                             // Optionally exclude test files from TypeScript compilation if Jest is handling them
+    ]
+  }
+  
