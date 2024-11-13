@@ -1,4 +1,4 @@
-import { Citizen } from './Citizen';
+import { Citizen } from '../Citizen';
 
 describe('Citizen Class', () => {
   it('should create a new citizen', () => {

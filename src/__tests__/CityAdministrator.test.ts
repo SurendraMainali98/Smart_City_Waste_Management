@@ -1,4 +1,4 @@
-import { CityAdministrator } from './CityAdministrator';
+import { CityAdministrator } from '../CityAdministrator';
 
 describe('CityAdministrator Class', () => {
   it('should create a new city administrator', () => {

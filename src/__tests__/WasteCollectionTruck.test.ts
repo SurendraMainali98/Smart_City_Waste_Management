@@ -1,4 +1,4 @@
-import { WasteCollectionTruck } from './WasteCollectionTruck';
+import { WasteCollectionTruck } from '../WasteCollectionTruck';
 
 describe('WasteCollectionTruck Class', () => {
   it('should create a new waste collection truck', () => {

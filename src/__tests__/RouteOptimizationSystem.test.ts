@@ -1,4 +1,4 @@
-import { RouteOptimizationSystem } from './RouteOptimizationSystem';
+import { RouteOptimizationSystem } from '../RouteOptimizationSystem';
 
 describe('RouteOptimizationSystem Class', () => {
   it('should create a new route optimization system', () => {

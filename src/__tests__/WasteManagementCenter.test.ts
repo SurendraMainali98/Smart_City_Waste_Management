@@ -1,4 +1,4 @@
-import { WasteManagementCenter } from './WasteManagementCenter';
+import { WasteManagementCenter } from '../WasteManagementCenter';
 
 describe('WasteManagementCenter Class', () => {
   it('should create a new waste management center', () => {

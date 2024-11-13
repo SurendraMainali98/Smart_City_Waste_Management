@@ -1,4 +1,4 @@
-import { RecyclingFacility } from './RecyclingFacility';
+import { RecyclingFacility } from '../RecyclingFacility';
 
 describe('RecyclingFacility Class', () => {
   it('should create a new recycling facility', () => {

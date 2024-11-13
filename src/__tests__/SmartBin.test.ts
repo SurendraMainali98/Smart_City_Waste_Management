@@ -1,4 +1,4 @@
-import { SmartBin } from './SmartBin';
+import { SmartBin } from '../SmartBin';
 
 describe('SmartBin Class', () => {
   it('should create a new smart bin', () => {

@@ -1,4 +1,4 @@
-import { IoTSensor } from './IoTSensor';
+import { IoTSensor } from '../IoTSensor';
 
 describe('IoTSensor Class', () => {
   it('should create a new sensor', () => {
