@@ -1,0 +1,28 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main # Trigger the pipeline when changes are made to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # This is the environment for running the steps
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2 # This action checks out your code from GitHub
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16" # Make sure the version of Node.js is correct for your project
+
+      - name: Install dependencies
+        run: npm install # Installs all the dependencies in package.json
+
+      - name: Run tests
+        run: npm test # Run tests (you need to have test scripts in your package.json)
+
+      - name: Deploy Application
+        run: ./deploy.sh # A script for deploying the app (you can replace it with your deployment command)
