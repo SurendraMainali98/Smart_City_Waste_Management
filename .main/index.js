@@ -23,7 +23,7 @@ bin.alert();
 truck.collectWaste();
 truck.updateStatus();
 center.generateReport();
-admin.apprclsovePolicyChange();
+admin.approvePolicyChange();
 sensor.monitorFillLevel();
 sensor.detectTemperature();
 optimizationSystem.calculateOptimalRoute();
